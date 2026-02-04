@@ -18,7 +18,7 @@ const Footer = () => {
         {/* Branding / Copyright - Aligned with Hero style */}
         <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6">
           <p className="text-gray-400 font-mono text-sm tracking-wide flex items-center gap-2">
-            Fullstack Developer <span className="text-[#00D1B2] font-extrabold text-lg tracking-tight">Areeba</span>
+            MERN Stack Developer <span className="text-[#00D1B2] font-extrabold text-lg tracking-tight">Areeba</span>
           </p>
           <div className="hidden md:block w-px h-6 bg-gray-500/20"></div>
           <p className="text-gray-500 text-[10px] font-mono uppercase tracking-[0.2em] opacity-60">

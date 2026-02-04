@@ -11,7 +11,7 @@ const Skills = () => {
         </svg>
       ),
       color: 'from-cyan-500 to-blue-600',
-      skills: ['React JS', 'Next JS', 'Tailwind', 'MUI']
+      skills: ['React JS', 'Next JS', 'Tailwind', 'MUI' , 'Bootstrap' ]
     },
     {
       title: 'Backend',
@@ -22,7 +22,7 @@ const Skills = () => {
         </svg>
       ),
       color: 'from-purple-500 to-pink-600',
-      skills: ['Node JS', 'Express', 'Python', 'REST']
+      skills: ['Node JS', 'Express', 'Python', 'REST APIs']
     },
     {
       title: 'Database',
@@ -35,17 +35,7 @@ const Skills = () => {
       color: 'from-blue-500 to-indigo-600',
       skills: ['Mongo DB', 'Mongoose', 'MySQL', 'Auth']
     },
-    {
-      title: 'Performance',
-      description: 'Optimization for high-speed, SEO-friendly applications.',
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      color: 'from-amber-500 to-orange-600',
-      skills: ['SEO', 'Web Vitals', 'Splitting', 'Lazy']
-    }
+     
   ];
 
   return (
@@ -65,37 +55,37 @@ const Skills = () => {
           </div>
         </SectionReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {skillsData.map((category, index) => (
             <SectionReveal key={index} delay={index * 0.1} width="100%">
               <div className="group relative h-full">
-                <div className="bg-[#0d1117]/40 backdrop-blur-xl rounded-2xl p-6 border border-gray-800 transition-all duration-500 hover:border-[#00D1B2]/30 hover:shadow-2xl hover:shadow-[#00D1B2]/5 flex flex-col h-full overflow-hidden">
+                <div className="bg-[#0d1117]/40 backdrop-blur-xl rounded-2xl p-8 border border-gray-800 transition-all duration-500 hover:border-[#00D1B2]/30 hover:shadow-2xl hover:shadow-[#00D1B2]/5 flex flex-col h-full overflow-hidden">
                   
                   {/* Subtle Gradient Glow Background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`}></div>
 
                   {/* Icon Section */}
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${category.color} p-[1px] mb-6 group-hover:scale-110 transition-transform duration-500 shrink-0`}>
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${category.color} p-[1px] mb-6 group-hover:scale-110 transition-transform duration-500 shrink-0 mx-auto`}>
                     <div className="w-full h-full bg-[#0d1117] rounded-2xl flex items-center justify-center text-white">
                       {category.icon}
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 flex flex-col h-full">
-                    <h3 className="text-xl font-bold text-white mb-2">
+                  <div className="relative z-10 flex flex-col h-full items-center text-center">
+                    <h3 className="text-xl font-bold text-white mb-3">
                       {category.title}
                     </h3>
                     
-                    <p className="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-2">
+                    <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2">
                       {category.description}
                     </p>
 
-                    <div className="mt-auto flex flex-wrap gap-2">
+                    <div className="mt-auto flex flex-wrap gap-2 justify-center">
                       {category.skills.map((skill) => (
                         <span 
                           key={skill}
-                          className="px-2.5 py-1 text-[10px] font-bold text-[#00D1B2] bg-[#00D1B2]/5 border border-[#00D1B2]/10 rounded-md"
+                          className="px-3 py-1.5 text-xs font-bold text-[#00D1B2] bg-[#00D1B2]/5 border border-[#00D1B2]/10 rounded-md"
                         >
                           {skill}
                         </span>

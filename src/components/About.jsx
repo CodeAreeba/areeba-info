@@ -2,6 +2,70 @@ import React from 'react';
 import SectionReveal from './SectionReveal';
 
 const About = () => {
+  const techStack = [
+    { 
+      name: 'React', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
+    },
+    { 
+      name: 'Next.js', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+      className: 'invert'
+    },
+    { 
+      name: 'JavaScript', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
+    },
+    { 
+      name: 'Node.js', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'
+    },
+    { 
+      name: 'Express', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+      className: 'invert'
+    },
+    { 
+      name: 'MongoDB', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg'
+    },
+    { 
+      name: 'Firebase', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg'
+    },
+    { 
+      name: 'HTML5', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
+    },
+    { 
+      name: 'CSS3', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
+    },
+    { 
+      name: 'Tailwind', 
+      icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg'
+    },
+    { 
+      name: 'Material UI', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg'
+    },
+    { 
+      name: 'Mongoose', 
+      icon: 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mongoose/mongoose.png'
+    },
+    { 
+      name: 'Git', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'
+    },
+    { 
+      name: 'Bootstrap', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'
+    },
+  ];
+
+  // Duplicate the array 4 times for seamless loop on large screens
+  const duplicatedTechStack = [...techStack, ...techStack, ...techStack, ...techStack];
+
   return (
     <section id="about" className="w-full py-20 px-6 lg:px-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -24,7 +88,8 @@ const About = () => {
               My goal is to help businesses ship reliable, SEO-friendly products quickly and with long-term maintainability in mind.
             </p>
 
-            <div className="space-y-4">
+            {/* Tech Stack Section */}
+            <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="bg-[#d946ef]/20 p-2 rounded-lg">
                   <svg className="w-6 h-6 text-[#d946ef]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,9 +99,36 @@ const About = () => {
                 <h3 className="text-white text-lg font-bold tracking-tight">Tech Toolbox</h3>
               </div>
               
-              <p className="text-gray-100 font-mono text-lg leading-relaxed max-w-2xl">
-                React, Next JS, Tailwind, Mongoose, Mongo DB, Express JS, Material UI
-              </p>
+              {/* Auto-Scrolling Carousel */}
+              <div className="relative overflow-hidden py-2">
+                <div className="tech-carousel-container group">
+                  <div className="tech-carousel flex gap-6">
+                    {duplicatedTechStack.map((tech, index) => (
+                      <div
+                        key={`${tech.name}-${index}`}
+                        className="tech-card flex-shrink-0 w-24"
+                      >
+                        <div className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800/50 rounded-xl p-4 flex flex-col items-center justify-center gap-3 h-28 transition-all duration-300 hover:border-[#00D1B2] hover:shadow-lg hover:shadow-[#00D1B2]/20 hover:-translate-y-1 relative group/card">
+                          {/* Icon */}
+                          <div className="flex items-center justify-center w-12 h-12">
+                            <img 
+                              src={tech.icon} 
+                              alt={tech.name} 
+                              className={`w-full h-full object-contain ${tech.className || ''}`}
+                            />
+                          </div>
+                          {/* Name */}
+                          <div className="text-xs font-medium text-gray-400 group-hover/card:text-gray-200 transition-colors text-center">
+                            {tech.name}
+                          </div>
+                          {/* Hover Glow */}
+                          <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-[#00D1B2]/10 to-[#d946ef]/10 blur-xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </SectionReveal>
@@ -57,6 +149,26 @@ const About = () => {
         </SectionReveal>
       </div>
     </div>
+
+    {/* Carousel Styles */}
+    <style jsx>{`
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-25%);
+        }
+      }
+
+      .tech-carousel {
+        animation: scroll-left 12s linear infinite;
+      }
+
+      .tech-carousel-container:hover .tech-carousel {
+        animation-play-state: paused;
+      }
+    `}</style>
   </section>
   );
 };

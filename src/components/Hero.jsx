@@ -34,7 +34,7 @@ const Hero = () => {
             </h2>
             <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
               This is <span className="text-[#d946ef]">Areeba Abdullah</span> , I'm 
-              a Professional <span className="text-[#00D1B2]">Fullstack Developer.</span>
+              a Professional <span className="text-[#00D1B2]">MERN Stack Developer.</span>
             </h1>
           </div>
 
