@@ -7,9 +7,9 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', id: 'home' },
     { name: 'About', id: 'about' },
-    { name: 'Portfolio', id: 'portfolio' },
+    { name: 'Projects', id: 'projects' },
     { name: 'Resume', id: 'resume' },
-    { name: 'Services', id: 'services' },
+    { name: 'Skills', id: 'skills' },
     { name: 'Contact', id: 'contact' },
   ];
 
@@ -39,56 +39,25 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="w-full bg-[var(--color-bg)] text-[var(--color-text)] sticky top-0 z-50 border-b border-gray-800 backdrop-blur-md bg-opacity-80">
-      <div className="w-full flex justify-center items-center py-4">
+    <nav className="w-full bg-[#0d1117]/80 backdrop-blur-xl sticky top-0 z-[100] border-b border-gray-800/50">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        {/* Logo / Name */}
+        <a href="#home" className="flex items-center gap-2 group">
+          <span className="text-2xl font-black tracking-tight text-white group-hover:text-[#00D1B2] transition-colors">
+          <span className="text-[#00D1B2]">Areeba</span> Abdullah
+          </span>
+        </a>
+
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-10 text-sm uppercase font-medium tracking-widest">
+        <ul className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <li
-              key={item.id}
-              className={`relative group cursor-pointer transition-all duration-300 ${
-                activeSection === item.id ? 'text-[var(--color-primary)]' : 'hover:text-[var(--color-primary)]'
-              }`}
-            >
-              <a href={`#${item.id}`} className="py-2 block">
-                {item.name}
-              </a>
-              {/* Underline effect */}
-              <span 
-                className={`absolute left-0 -bottom-1 h-[2px] bg-[var(--color-primary)] transition-all duration-300 ${
-                  activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
-              ></span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Hamburger */}
-        <div className="md:hidden flex items-center pr-4">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-col justify-between w-6 h-5 focus:outline-none"
-          >
-            <span className={`block h-0.5 bg-[var(--color-primary)] transition-transform ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`block h-0.5 bg-[var(--color-primary)] transition-opacity ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`block h-0.5 bg-[var(--color-primary)] transition-transform ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <ul className="md:hidden flex flex-col items-center bg-[var(--color-bg)] w-full py-4 space-y-4 text-sm uppercase font-medium tracking-widest border-t border-gray-800">
-          {navItems.map((item) => (
-            <li
-              key={item.id}
-              className="w-full text-center"
-              onClick={() => setIsOpen(false)}
-            >
+            <li key={item.id}>
               <a 
                 href={`#${item.id}`} 
-                className={`block w-full py-2 transition-colors duration-300 ${
-                  activeSection === item.id ? 'text-[var(--color-primary)]' : 'hover:text-[var(--color-primary)]'
+                className={`text-xs uppercase font-bold tracking-[0.2em] transition-all duration-300 ${
+                  activeSection === item.id 
+                    ? 'text-[#00D1B2]' 
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
                 {item.name}
@@ -96,6 +65,43 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-gray-400 hover:text-[#00D1B2] focus:outline-none"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-[#0d1117] border-b border-gray-800 animate-slideDown">
+          <ul className="flex flex-col p-6 gap-4">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <a 
+                  href={`#${item.id}`} 
+                  onClick={() => setIsOpen(false)}
+                  className={`text-xs uppercase font-bold tracking-widest block py-2 ${
+                    activeSection === item.id ? 'text-[#00D1B2]' : 'text-gray-400'
+                  }`}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </nav>
 

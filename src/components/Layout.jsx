@@ -3,36 +3,19 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div className="relative min-h-screen bg-main text-text-main font-sans">
-      {/* Subtle Neon Gray Gradient Overlay */}
+    <div className="relative min-h-screen bg-transparent text-white font-sans selection:bg-[#00D1B2]/30">
+      {/* Background Decorative Gradient */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-500/15 via-transparent to-gray-600/15"></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-gray-400/10 to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-500/8 via-transparent to-transparent"></div>
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#00D1B2]/5 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#8b5cf6]/5 rounded-full blur-[120px]"></div>
       </div>
 
-      {/* Border Frame Container - extends with content */}
-      <div className="relative min-h-screen">
-        {/* Top Horizontal Line */}
-        <div className="absolute top-12 left-0 right-0 h-[1px] bg-neon-gray shadow-neon"></div>
-        
-        {/* Left Vertical Line - extends with content */}
-        <div className="absolute top-0 left-12 bottom-0 w-[1px] bg-neon-gray shadow-neon"></div>
-        
-        {/* Right Vertical Line - extends with content */}
-        <div className="absolute top-0 right-12 bottom-0 w-[1px] bg-neon-gray shadow-neon"></div>
-        
-        {/* Bottom Horizontal Line - positioned at the end of content */}
-        <div className="absolute bottom-12 left-0 right-0 h-[1px] bg-neon-gray shadow-neon"></div>
-
-        {/* Main Content Area */}
-        <div className="relative z-10 px-16 flex flex-col pt-16 pb-14 min-h-screen">
-          <Navbar />
-          <div className="px-4 py-8 flex-1">
-              {children}
-          </div>
-          <Footer />
-        </div>
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </div>
     </div>
   );

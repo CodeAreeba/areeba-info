@@ -6,11 +6,24 @@
   html {
     scroll-behavior: smooth;
   }
+  
   :root {
-    --color-bg: #000000;
-    --color-text: #ffffff;
-    --color-primary: #d1d5db; /* gray-300 */
-    --color-neon-shadow: rgba(255, 255, 255, 0.6);
+    --color-bg: #0d1117;
+    --color-text: #e6edf3;
+    --color-primary: #00D1B2; /* Teal accent */
+    --color-secondary: #d946ef; /* Pink accent */
+    --color-accent: #8b5cf6; /* Purple accent */
+    --grid-color: rgba(255, 255, 255, 0.03);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    background-image: 
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
   }
 }
 
