@@ -85,15 +85,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#0d1117] border-b border-gray-800 animate-slideDown">
-          <ul className="flex flex-col p-6 gap-4">
+        <div className="md:hidden fixed inset-0 top-20 bg-[#0d1117]/95 backdrop-blur-xl z-50 animate-slideDown h-[calc(100vh-80px)] overflow-y-auto">
+          <ul className="flex flex-col p-8 gap-8 items-center justify-center h-full">
             {navItems.map((item) => (
               <li key={item.id}>
                 <a 
                   href={`#${item.id}`} 
                   onClick={() => setIsOpen(false)}
-                  className={`text-xs uppercase font-bold tracking-widest block py-2 ${
-                    activeSection === item.id ? 'text-[#00D1B2]' : 'text-gray-400'
+                  className={`text-2xl uppercase font-black tracking-widest block py-2 hover:scale-110 transition-transform ${
+                    activeSection === item.id ? 'text-[#00D1B2]' : 'text-gray-400 hover:text-white'
                   }`}
                 >
                   {item.name}

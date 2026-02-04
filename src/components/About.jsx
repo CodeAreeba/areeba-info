@@ -75,7 +75,7 @@ const About = () => {
           </h2>
         </SectionReveal>
 
-        <div className="grid lg:grid-cols-[1.5fr,1fr] gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1.5fr,1fr] gap-12 lg:gap-16 items-center">
           {/* Left Side: Content */}
           <SectionReveal>
             <div className="space-y-8">
