@@ -138,7 +138,7 @@ const About = () => {
           <div className="relative group">
             <div className="relative rounded-2xl overflow-hidden border border-gray-800 bg-[#161b22] shadow-2xl">
                 <img 
-                    src="/Areeba-Dp.jpeg" 
+                    src="/Areeba-Dp-removebg-preview.png" 
                     alt="Areeba Abdullah" 
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                 />
