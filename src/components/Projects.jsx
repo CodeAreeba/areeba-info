@@ -101,11 +101,11 @@ const Projects = () => {
   const visibleProjects = getVisibleProjects();
 
   return (
-    <section id="projects" className="w-full py-20 px-6 lg:px-24 relative overflow-hidden">
+    <section id="projects" className="w-full py-12 md:py-20 px-6 lg:px-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <SectionReveal width="100%">
-          <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-10 md:mb-16">
             Projects
           </h2>
         </SectionReveal>

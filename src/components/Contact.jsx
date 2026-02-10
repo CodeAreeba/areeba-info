@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-20 px-6 lg:px-24 relative overflow-hidden">
+    <section id="contact" className="w-full py-12 md:py-20 px-6 lg:px-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Heading - Aligned with Projects/Resume */}

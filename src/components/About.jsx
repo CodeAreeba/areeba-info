@@ -67,7 +67,7 @@ const About = () => {
   const duplicatedTechStack = [...techStack, ...techStack, ...techStack, ...techStack];
 
   return (
-    <section id="about" className="w-full py-20 px-6 lg:px-24 relative overflow-hidden">
+    <section id="about" className="w-full py-12 md:py-20 px-6 lg:px-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <SectionReveal width="100%">
           <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-16">
