@@ -1,7 +1,37 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import SectionReveal from './SectionReveal';
 
 const Contact = () => {
+  const form = useRef();
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState({ type: null, message: null });
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setStatus({ type: null, message: null });
+
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      form.current,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+      .then((result) => {
+        console.log(result.text);
+        setStatus({ type: 'success', message: 'Message sent successfully!' });
+        form.current.reset();
+        setTimeout(() => setStatus({ type: null, message: null }), 5000);
+      }, (error) => {
+        console.log(error.text);
+        setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
+  };
+
   return (
     <section id="contact" className="w-full py-20 px-6 lg:px-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -23,11 +53,13 @@ const Contact = () => {
                 I am open to any work opportunities that align with my skills and interests.
               </p>
 
-              <form className="space-y-6">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div>
                   <label className="block text-gray-300 font-medium text-sm mb-2">Your Name:</label>
                   <input 
+                    name="user_name"
                     type="text" 
+                    required
                     className="w-full bg-gray-900/40 border border-gray-600/50 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#00D1B2] transition-colors"
                     placeholder="Enter your name"
                   />
@@ -35,7 +67,9 @@ const Contact = () => {
                 <div>
                   <label className="block text-gray-300 font-medium text-sm mb-2">Your Email:</label>
                   <input 
+                    name="user_email"
                     type="email" 
+                    required
                     className="w-full bg-gray-900/40 border border-gray-600/50 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#00D1B2] transition-colors"
                     placeholder="Enter your email"
                   />
@@ -43,21 +77,34 @@ const Contact = () => {
                 <div>
                   <label className="block text-gray-300 font-medium text-sm mb-2">Your Message:</label>
                   <textarea 
+                    name="message"
                     rows="4" 
+                    required
                     className="w-full bg-gray-900/40 border border-gray-600/50 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#00D1B2] transition-colors resize-none"
                     placeholder="Type your message here..."
                   ></textarea>
                 </div>
                 
+                {status.message && (
+                  <div className={`p-4 rounded-lg text-sm font-medium ${
+                    status.type === 'success' ? 'bg-green-500/20 text-green-400 border border-green-500/50' : 'bg-red-500/20 text-red-400 border border-red-500/50'
+                  }`}>
+                    {status.message}
+                  </div>
+                )}
+
                 <div className="pt-4 flex justify-center lg:justify-start">
                   <button 
                     type="submit" 
-                    className="flex items-center gap-3 bg-gradient-to-r from-[#d946ef] to-[#8b5cf6] text-white font-bold py-3 px-8 rounded-xl hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 group uppercase text-xs tracking-widest shadow-lg"
+                    disabled={isSending}
+                    className="flex items-center gap-3 bg-gradient-to-r from-[#d946ef] to-[#8b5cf6] text-white font-bold py-3 px-8 rounded-xl hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 group uppercase text-xs tracking-widest shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    SEND MESSAGE
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+                    {isSending ? 'Sending...' : 'SEND MESSAGE'}
+                    {!isSending && (
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    )}
                   </button>
                 </div>
               </form>
@@ -140,7 +187,6 @@ const Contact = () => {
     </section>
   );
 };
-
 
 export default Contact;
 
