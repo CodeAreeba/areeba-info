@@ -61,9 +61,13 @@ const Hero = () => {
             >
               CONTACT ME <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
-            <button className="px-8 py-3.5 sm:px-10 sm:py-4 bg-gradient-to-r from-[#d946ef] to-[#8b5cf6] text-white font-medium rounded-full transition-all shadow-xl shadow-[#d946ef]/20 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base">
+            <a 
+              href="/resume.pdf" 
+              download="Areeba_Abdullah_Resume.pdf"
+              className="px-8 py-3.5 sm:px-10 sm:py-4 bg-gradient-to-r from-[#d946ef] to-[#8b5cf6] text-white font-medium rounded-full transition-all shadow-xl shadow-[#d946ef]/20 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base"
+            >
               GET RESUME
-            </button>
+            </a>
           </div>
         </Motion.div>
 
