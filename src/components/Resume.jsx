@@ -58,11 +58,26 @@ const Resume = () => {
   return (
     <section id="resume" className="w-full py-12 md:py-20 px-6 lg:px-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <SectionReveal width="100%">
-          <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-16">
-            Resume
-          </h2>
-        </SectionReveal>
+        <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-6">
+          <SectionReveal width="fit-content">
+            <h2 className="text-5xl md:text-6xl font-bold text-white text-center md:text-left mb-0">
+              Resume
+            </h2>
+          </SectionReveal>
+
+          <SectionReveal delay={0.2} width="fit-content">
+            <a 
+              href="/resume.pdf" 
+              download="Areeba_Abdullah_Resume.pdf"
+              className="flex items-center gap-2 px-6 py-3 bg-[#161b22] border border-[#00D1B2]/30 text-[#00D1B2] font-bold rounded-xl hover:bg-[#00D1B2]/10 transition-all duration-300 shadow-lg group"
+            >
+              <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              DOWNLOAD FULL CV
+            </a>
+          </SectionReveal>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
