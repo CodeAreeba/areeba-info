@@ -47,11 +47,11 @@ const Projects = () => {
       description: 'A high-speed Point of Sale system designed for efficient transaction management, inventory tracking, and sales reporting.',
       category: 'Business',
       technologies: ['React', 'Express', 'MongoDB', 'MUI'],
-      role: 'MERN Stack Developer (Team Work)',
+      role: 'MERN Stack Developer',
       image: '/pos-billing.png',
       github: 'https://github.com/theusmansarwar/posFrontend',
       demo: 'https://pos.ztesting.site',
-      status: 'Team Project',
+      status: 'Live',
       features: [
         'Fast transaction processing with optimized database queries',
         'Real-time inventory tracking and alerts',
